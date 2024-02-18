@@ -14,6 +14,7 @@ public class PlayersMovement : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody;
+
     private int IsRunning = Animator.StringToHash(nameof(IsRunning));
 
     private void Awake()
