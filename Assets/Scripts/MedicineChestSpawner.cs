@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class MedicineChestSpawner : MonoBehaviour
 {
-    [SerializeField] private MedicineChest _medicineChest;
+    [SerializeField] private MedicineChest _medicineChestPrefab;
     [SerializeField] private int _medcineChestsMaxCount;
 
     private List<Transform> _spawnPoints = new List<Transform>();
 
     private void Awake()
     {
-        for (int i = 0; i < gameObject.transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            _spawnPoints.Add(gameObject.transform.GetChild(i));
+            _spawnPoints.Add(transform.GetChild(i));
         }
     }
 
@@ -21,7 +21,7 @@ public class MedicineChestSpawner : MonoBehaviour
         for (int i = 0; i < _medcineChestsMaxCount; i++)
         {
             int currentPoint = Random.Range(0, _spawnPoints.Count);
-            MedicineChest created = Instantiate(_medicineChest, _spawnPoints[currentPoint].position, Quaternion.identity);
+            MedicineChest created = Instantiate(_medicineChestPrefab, _spawnPoints[currentPoint].position, Quaternion.identity);
             _spawnPoints.RemoveAt(currentPoint);
         }
     }
