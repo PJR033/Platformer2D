@@ -1,16 +1,11 @@
 using UnityEngine;
 
-[RequireComponent (typeof(PlayersHealth))]
 public class PlayersWallet : MonoBehaviour
 {
-    private int _coinsCount = 0;
+    private int _coinsAmount = 0;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void IncreaseCoinsAmount()
     {
-        if(collision.TryGetComponent(out Coin coin))
-        {
-            _coinsCount++;
-            Destroy(coin.gameObject);
-        }
+        _coinsAmount++;
     }
 }

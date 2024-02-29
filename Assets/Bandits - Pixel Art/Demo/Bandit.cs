@@ -6,7 +6,7 @@ public class Bandit : MonoBehaviour {
     [SerializeField] float      m_speed = 4.0f;
     [SerializeField] float      m_jumpForce = 7.5f;
 
-    private Animator            m_animator;
+    private UnityEngine.Animator            m_animator;
     private Rigidbody2D         m_body2d;
     private Sensor_Bandit       m_groundSensor;
     private bool                m_grounded = false;
@@ -15,7 +15,7 @@ public class Bandit : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        m_animator = GetComponent<Animator>();
+        m_animator = GetComponent<UnityEngine.Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Bandit>();
     }

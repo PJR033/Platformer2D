@@ -1,26 +1,23 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayersMovement : MonoBehaviour
 {
-    private const string Horizontal = nameof(Horizontal);
+    private const string Horizontal = ("Horizontal");
     private const string SpaceKey = "space";
 
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
 
-    private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
-    private Rigidbody2D _rigidbody;
+    public event Action MovementHappened;
+    public event Action JumpHappened;
+    public event Action MovementStoped;
 
-    private int isRunning = Animator.StringToHash(nameof(isRunning));
+    private Rigidbody2D _rigidbody;
 
     private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -36,24 +33,29 @@ public class PlayersMovement : MonoBehaviour
 
         if (directionX > 0)
         {
-            _spriteRenderer.flipX = true;
-            _animator.SetBool(isRunning, true);
+            Vector3 rotate = transform.eulerAngles;
+            rotate.y = 180;
+            transform.rotation = Quaternion.Euler(rotate);
+            MovementHappened?.Invoke();
+            transform.Translate(distanceX * Vector2.left);
         }
         else if (directionX < 0)
         {
-            _spriteRenderer.flipX = false;
-            _animator.SetBool(isRunning, true);
+            Vector3 rotate = transform.eulerAngles;
+            rotate.y = 0;
+            transform.rotation = Quaternion.Euler(rotate);
+            MovementHappened?.Invoke();
+            transform.Translate(distanceX * Vector2.right);
         }
         else
         {
-            _animator.SetBool(isRunning, false);
+            MovementStoped?.Invoke();
         }
 
         if (Input.GetKeyDown(SpaceKey))
         {
+            JumpHappened?.Invoke();
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpForce);
         }
-
-        transform.Translate(distanceX * Vector2.right);
     }
 }

@@ -8,6 +8,8 @@ public class EnemyMovement : MonoBehaviour
 
     private EnemyPatrol _enemyPatrol;
     private EnemyFollow _enemyFollow;
+    private Player _player;
+    private bool _isFollowing = false;
 
     private void Awake()
     {
@@ -15,11 +17,28 @@ public class EnemyMovement : MonoBehaviour
         _enemyFollow = GetComponent<EnemyFollow>();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Player player))
+        {
+            _isFollowing = true;
+            _player = player;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Player player))
+        {
+            _isFollowing = false;
+        }
+    }
+
     private void Update()
     {
-        if (_enemyFollow.IsFollowing)
+        if (_isFollowing)
         {
-            _enemyFollow.Following(_speed);
+            _enemyFollow.Following(_speed, _player.transform.position);
         }
         else
         {

@@ -1,21 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] protected float _health;
+    [SerializeField] private float _maxHealth;
+
+    public event Action HealthHurted;
+    public event Action ObjectDead;
+
+    private float _currentHealth;
+
+    private void Awake()
+    {
+        _currentHealth = _maxHealth;
+    }
 
     public void TakeDamage(float dealedDamage)
     {
         if (dealedDamage >= 0)
         {
-            _health -= dealedDamage;
+            _currentHealth -= dealedDamage;
+            HealthHurted?.Invoke();
 
-            if (_health <= 0)
+            if (_currentHealth <= 0)
             {
-                _health = 0;
+                _currentHealth = 0;
+                ObjectDead?.Invoke();
                 Destroy(gameObject);
+            }
+        }
+    }
+
+    public void TakeHeal(float healthHealed)
+    {
+        if (healthHealed >= 0)
+        {
+            _currentHealth += healthHealed;
+
+            if (_currentHealth > _maxHealth)
+            {
+                _currentHealth = _maxHealth;
             }
         }
     }

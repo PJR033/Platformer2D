@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 2887508813685087186}
   - component: {fileID: -7449782402204787403}
   - component: {fileID: -6363789658178409577}
-  - component: {fileID: 8720415302980503882}
   - component: {fileID: 5958928371544727092}
   - component: {fileID: 8387557951288771108}
   - component: {fileID: 7022156576578909213}
   - component: {fileID: 7265292994419243131}
+  - component: {fileID: 5277294113072697988}
   m_Layer: 0
   m_Name: Green Slime
   m_TagString: Untagged
@@ -174,19 +174,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8720415302980503882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6096767733248190016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f9e4267254903c4f837adbc70f6ad3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 50
 --- !u!114 &5958928371544727092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 30
+  _damageDelay: 1
 --- !u!61 &8387557951288771108
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -251,3 +239,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: {fileID: 5367701208975460969, guid: 0980cf3b135b1d84ebeddd288e67af48, type: 3}
+--- !u!114 &5277294113072697988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6096767733248190016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3acf718f84cf104889251a44e40f4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100

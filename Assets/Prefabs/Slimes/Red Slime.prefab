@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: -3975599690867992759}
   - component: {fileID: -4460420208811721962}
   - component: {fileID: 141144675232967863}
-  - component: {fileID: 7394935029712784460}
   - component: {fileID: 6001501588033856672}
   - component: {fileID: 4245591283248356988}
   - component: {fileID: 5201137422130716434}
+  - component: {fileID: 7652728776329321200}
   m_Layer: 0
   m_Name: Red Slime
   m_TagString: Untagged
@@ -200,19 +200,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7394935029712784460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909970772487523232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f9e4267254903c4f837adbc70f6ad3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 30
 --- !u!114 &6001501588033856672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 30
+  _damageDelay: 0
 --- !u!114 &4245591283248356988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,3 +239,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: {fileID: 5564176852464797876, guid: f19f14415d9d5ba43804999f7def1fad, type: 3}
+--- !u!114 &7652728776329321200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909970772487523232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3acf718f84cf104889251a44e40f4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 50
