@@ -5,11 +5,10 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private PlayersFinder _locator;
 
     private EnemyPatrol _enemyPatrol;
     private EnemyFollow _enemyFollow;
-    private Player _player;
-    private bool _isFollowing = false;
 
     private void Awake()
     {
@@ -17,28 +16,11 @@ public class EnemyMovement : MonoBehaviour
         _enemyFollow = GetComponent<EnemyFollow>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out Player player))
-        {
-            _isFollowing = true;
-            _player = player;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out Player player))
-        {
-            _isFollowing = false;
-        }
-    }
-
     private void Update()
     {
-        if (_isFollowing)
+        if (_locator.IsFollowing)
         {
-            _enemyFollow.Following(_speed, _player.transform.position);
+            _enemyFollow.Following(_speed, _locator.Player.transform.position);
         }
         else
         {

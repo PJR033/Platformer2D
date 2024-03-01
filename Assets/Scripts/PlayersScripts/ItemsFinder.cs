@@ -2,14 +2,8 @@ using UnityEngine;
 
 public class ItemsFinder : MonoBehaviour
 {
-    private Health _playersHealth;
-    private PlayersWallet _wallet;
-
-    private void Awake()
-    {
-        _playersHealth = GetComponent<Health>();
-        _wallet = GetComponent<PlayersWallet>();
-    }
+    [SerializeField] private Health _playersHealth;
+    [SerializeField] private PlayersWallet _wallet;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
