@@ -18,8 +18,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_locator.IsFollowing)
+        if (_locator.IsFollowing && _locator.Player != null)
         {
+            
             _enemyFollow.Following(_speed, _locator.Player.transform.position);
         }
         else

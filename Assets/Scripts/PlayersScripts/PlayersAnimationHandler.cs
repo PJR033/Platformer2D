@@ -1,8 +1,6 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(PlayersMovement))]
-[RequireComponent(typeof(PlayersAttacker))]
 [RequireComponent(typeof(Health))]
 
 public class PlayersAnimationHandler : MonoBehaviour

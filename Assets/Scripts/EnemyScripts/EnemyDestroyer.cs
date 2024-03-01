@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent (typeof(Health))]
+[RequireComponent(typeof(Health))]
 public class EnemyDestroyer : MonoBehaviour
 {
     private Health _health;
