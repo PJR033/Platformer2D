@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyAttacker : MonoBehaviour
 {
     [SerializeField] private float _attackForce;

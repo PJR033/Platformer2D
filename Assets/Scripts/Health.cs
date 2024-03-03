@@ -19,12 +19,11 @@ public class Health : MonoBehaviour
     {
         if (dealedDamage >= 0)
         {
-            _currentHealth -= dealedDamage;
+            _currentHealth = Mathf.Clamp(_currentHealth - dealedDamage, 0, _maxHealth);
             HealthHurted?.Invoke();
 
-            if (_currentHealth <= 0)
+            if (_currentHealth == 0)
             {
-                _currentHealth = 0;
                 ObjectDead?.Invoke();
             }
         }
