@@ -13,6 +13,8 @@ public class PlayersMovement : MonoBehaviour
     public event Action MovementHappened;
     public event Action JumpHappened;
     public event Action MovementStoped;
+    public delegate void RotateYHandler(float rotateY);
+    public event RotateYHandler PlayerFlipped;
 
     private Rigidbody2D _rigidbody;
 
@@ -33,17 +35,15 @@ public class PlayersMovement : MonoBehaviour
 
         if (directionX > 0)
         {
-            Vector3 rotate = transform.eulerAngles;
-            rotate.y = 180;
-            transform.rotation = Quaternion.Euler(rotate);
+            float rotateY = 180f;
+            Flip(rotateY);
             MovementHappened?.Invoke();
             transform.Translate(distanceX * Vector2.left);
         }
         else if (directionX < 0)
         {
-            Vector3 rotate = transform.eulerAngles;
-            rotate.y = 0;
-            transform.rotation = Quaternion.Euler(rotate);
+            float rotateY = 0f;
+            Flip(rotateY);
             MovementHappened?.Invoke();
             transform.Translate(distanceX * Vector2.right);
         }
@@ -57,5 +57,14 @@ public class PlayersMovement : MonoBehaviour
             JumpHappened?.Invoke();
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpForce);
         }
+    }
+
+    private void Flip(float rotateY)
+    {
+        Vector3 rotate = transform.eulerAngles;
+
+        rotate.y = rotateY;
+        transform.rotation = Quaternion.Euler(rotate);
+        PlayerFlipped?.Invoke(rotateY);
     }
 }
