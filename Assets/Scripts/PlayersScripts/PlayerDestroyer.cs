@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class PlayerDestroyer : MonoBehaviour
 {
-    private PlayersMovement _movement;
+    [SerializeField] private GameObject _healthBarImages;
+    
     private PlayersAttacker _attacker;
     private PlayersWallet _wallet;
+    private PlayersMovement _movement;
     private float _animationDuration = 0.8f;
 
     private void Awake()
@@ -16,6 +18,7 @@ public class PlayerDestroyer : MonoBehaviour
 
     private void DestroyPlayer()
     {
+        Destroy(_healthBarImages);
         Destroy(_movement);
         Destroy(_attacker);
         Destroy(_wallet);

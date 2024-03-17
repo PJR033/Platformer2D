@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SmoothlyHealthBar : HealthBar
 {
-    [SerializeField] private float _maxDelta;
+    private float _maxDelta = 0.01f;
 
     private Coroutine _setHealthBarSmoothlyCoroutine;
 

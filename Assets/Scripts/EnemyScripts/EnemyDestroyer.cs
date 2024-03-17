@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyDestroyer : MonoBehaviour
 {
+    [SerializeField] private GameObject _healthBarImages;
+    
     private EnemyAttacker _attacker;
     private EnemyMovement _movement;
     private EnemyPatrol _patrol;
@@ -21,6 +23,7 @@ public class EnemyDestroyer : MonoBehaviour
         Destroy(_movement);
         Destroy(_follow);
         Destroy(_patrol);
+        Destroy(_healthBarImages);
     }
 
     private void DestroyEnemy()

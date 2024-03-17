@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: -5080116254741327586}
   - component: {fileID: -7497190640793735646}
   - component: {fileID: -6574074677934569613}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Blue Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d723e60e0f01e47479d54c29b9e6d228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthBarImages: {fileID: 0}
 --- !u!61 &-7077329502409566909
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -225,7 +226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3acf718f84cf104889251a44e40f4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 50
 --- !u!114 &-7497190640793735646
 MonoBehaviour:
   m_ObjectHideFlags: 0

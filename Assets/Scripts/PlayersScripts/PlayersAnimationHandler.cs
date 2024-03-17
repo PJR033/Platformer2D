@@ -12,14 +12,14 @@ public class PlayersAnimationHandler : MonoBehaviour
     private int _isDead = Animator.StringToHash("isDead");
 
     private Animator _animator;
-    private PlayersMovement _playersMovement;
     private PlayersAttacker _playersAttacker;
+    private PlayersMovement _playersMovement;
     private Health _playersHealth;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
         _playersMovement = GetComponent<PlayersMovement>();
+        _animator = GetComponent<Animator>();
         _playersAttacker = GetComponent<PlayersAttacker>();
         _playersHealth = GetComponent<Health>();
     }
@@ -30,8 +30,8 @@ public class PlayersAnimationHandler : MonoBehaviour
         _playersMovement.MovementHappened += StartRunningAnimation;
         _playersMovement.MovementStoped += StopRunningAnimation;
         _playersAttacker.AttackStarted += StartAttackAnimation;
-        _playersHealth.ObjectDead += StartDeathAnimation;
-        _playersHealth.HealthHurted += StartHurtedAnimation;
+        _playersHealth.IsDead += StartDeathAnimation;
+        _playersHealth.DamageTaken += StartHurtedAnimation;
     }
 
     private void OnDisable()
@@ -40,8 +40,8 @@ public class PlayersAnimationHandler : MonoBehaviour
         _playersMovement.MovementHappened -= StartRunningAnimation;
         _playersMovement.MovementStoped -= StopRunningAnimation;
         _playersAttacker.AttackStarted -= StartAttackAnimation;
-        _playersHealth.ObjectDead -= StartDeathAnimation;
-        _playersHealth.HealthHurted -= StartHurtedAnimation;
+        _playersHealth.IsDead -= StartDeathAnimation;
+        _playersHealth.DamageTaken -= StartHurtedAnimation;
     }
 
     private void StartRunningAnimation()

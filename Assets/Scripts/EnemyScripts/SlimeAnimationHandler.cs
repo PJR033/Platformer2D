@@ -17,14 +17,14 @@ public class SlimeAnimationHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _slimeHealth.ObjectDead += StartDeathAnimation;
-        _slimeHealth.HealthHurted += StartHurtedAnimation;
+        _slimeHealth.IsDead += StartDeathAnimation;
+        _slimeHealth.DamageTaken += StartHurtedAnimation;
     }
 
     private void OnDisable()
     {
-        _slimeHealth.ObjectDead -= StartDeathAnimation;
-        _slimeHealth.HealthHurted -= StartHurtedAnimation;
+        _slimeHealth.IsDead -= StartDeathAnimation;
+        _slimeHealth.DamageTaken -= StartHurtedAnimation;
     }
 
     private void StartHurtedAnimation()
